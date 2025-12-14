@@ -47,7 +47,7 @@ function ContainersPage() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2">容器列表</h1>
+            <h1 className="text-3xl font-bold mb-2">容器管理</h1>
             <p className="text-gray-600">管理您的容器</p>
           </div>
           <button

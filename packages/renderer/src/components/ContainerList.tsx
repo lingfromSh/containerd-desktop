@@ -4,6 +4,7 @@ import type { Container, ContainerDetails } from '@/types/container'
 import { ContainerDetailsModal } from './ContainerDetailsModal'
 import { ContainerLogsModal } from './ContainerLogsModal'
 import { ContainerTerminalModal } from './ContainerTerminalModal'
+import { Pagination } from './Pagination'
 
 interface ContainerListProps {
   containers: Container[]
@@ -65,10 +66,23 @@ export function ContainerList({
   const [detailsModal, setDetailsModal] = useState<ContainerDetails | null>(null)
   const [logsModal, setLogsModal] = useState<{ containerId: string; containerName: string } | null>(null)
   const [terminalModal, setTerminalModal] = useState<{ containerId: string; containerName: string } | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize, setPageSize] = useState(10)
+
+  // 分页数据切片
+  const totalPages = Math.ceil(containers.length / pageSize)
+  const startIndex = (currentPage - 1) * pageSize
+  const endIndex = startIndex + pageSize
+  const paginatedContainers = containers.slice(startIndex, endIndex)
+
+  // 当数据变化时，调整当前页
+  if (currentPage > totalPages && totalPages > 0) {
+    setCurrentPage(totalPages)
+  }
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
-      setSelectedIds(new Set(containers.map((c) => c.id)))
+      setSelectedIds(new Set(paginatedContainers.map((c) => c.id)))
     } else {
       setSelectedIds(new Set())
     }
@@ -112,8 +126,14 @@ export function ContainerList({
     }
   }
 
-  const allSelected = containers.length > 0 && selectedIds.size === containers.length
-  const someSelected = selectedIds.size > 0 && selectedIds.size < containers.length
+  const allSelected = paginatedContainers.length > 0 && selectedIds.size === paginatedContainers.length
+  const someSelected = selectedIds.size > 0 && selectedIds.size < paginatedContainers.length
+
+  // 切换页面时清空选择
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+    setSelectedIds(new Set())
+  }
 
   const handleViewDetails = async (containerId: string) => {
     try {
@@ -247,7 +267,7 @@ export function ContainerList({
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {containers.map((container) => (
+            {paginatedContainers.map((container) => (
               <tr
                 key={container.id}
                 className={`hover:bg-blue-50 transition-colors ${selectedIds.has(container.id) ? 'bg-blue-50' : ''
@@ -414,6 +434,19 @@ export function ContainerList({
           </tbody>
         </table>
       </div>
+
+      {/* 分页组件 */}
+      <Pagination
+        currentPage={currentPage}
+        totalItems={containers.length}
+        pageSize={pageSize}
+        onPageChange={handlePageChange}
+        onPageSizeChange={(size) => {
+          setPageSize(size)
+          setCurrentPage(1)
+          setSelectedIds(new Set())
+        }}
+      />
 
       {/* 模态组件 */}
       {detailsModal && (

@@ -15,15 +15,19 @@ function MappingsPage() {
     deletePortMapping,
     deleteVolumeMapping,
     deleteNetworkMapping,
+    batchDeletePortMappings,
+    batchDeleteVolumeMappings,
+    batchDeleteNetworkMappings,
     isCreating,
     isDeleting,
+    isBatchDeleting,
   } = useMappings()
 
   return (
     <div className="min-h-full bg-gray-50 text-gray-900 p-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">映射列表</h1>
+          <h1 className="text-3xl font-bold mb-2">映射管理</h1>
           <p className="text-gray-600">管理容器映射</p>
         </div>
 
@@ -41,8 +45,12 @@ function MappingsPage() {
               onDeletePortMapping={deletePortMapping}
               onDeleteVolumeMapping={deleteVolumeMapping}
               onDeleteNetworkMapping={deleteNetworkMapping}
+              onBatchDeletePortMappings={batchDeletePortMappings}
+              onBatchDeleteVolumeMappings={batchDeleteVolumeMappings}
+              onBatchDeleteNetworkMappings={batchDeleteNetworkMappings}
               isCreating={isCreating}
               isDeleting={isDeleting}
+              isBatchDeleting={isBatchDeleting}
             />
           )}
         </div>

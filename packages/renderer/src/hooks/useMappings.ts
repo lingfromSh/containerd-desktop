@@ -9,6 +9,9 @@ import {
   deletePortMapping,
   deleteVolumeMapping,
   deleteNetworkMapping,
+  batchDeletePortMappings,
+  batchDeleteVolumeMappings,
+  batchDeleteNetworkMappings,
 } from '@/lib/api/mappings'
 import type { PortMapping, VolumeMapping, NetworkMapping } from '@/types/mapping'
 
@@ -72,6 +75,27 @@ export function useMappings() {
     },
   })
 
+  const batchDeletePortMutation = useMutation({
+    mutationFn: batchDeletePortMappings,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['mappings', 'ports'] })
+    },
+  })
+
+  const batchDeleteVolumeMutation = useMutation({
+    mutationFn: batchDeleteVolumeMappings,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['mappings', 'volumes'] })
+    },
+  })
+
+  const batchDeleteNetworkMutation = useMutation({
+    mutationFn: batchDeleteNetworkMappings,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['mappings', 'networks'] })
+    },
+  })
+
   return {
     portMappings,
     volumeMappings,
@@ -83,6 +107,9 @@ export function useMappings() {
     deletePortMapping: deletePortMutation.mutateAsync,
     deleteVolumeMapping: deleteVolumeMutation.mutateAsync,
     deleteNetworkMapping: deleteNetworkMutation.mutateAsync,
+    batchDeletePortMappings: batchDeletePortMutation.mutateAsync,
+    batchDeleteVolumeMappings: batchDeleteVolumeMutation.mutateAsync,
+    batchDeleteNetworkMappings: batchDeleteNetworkMutation.mutateAsync,
     isCreating:
       createPortMutation.isPending ||
       createVolumeMutation.isPending ||
@@ -91,5 +118,9 @@ export function useMappings() {
       deletePortMutation.isPending ||
       deleteVolumeMutation.isPending ||
       deleteNetworkMutation.isPending,
+    isBatchDeleting:
+      batchDeletePortMutation.isPending ||
+      batchDeleteVolumeMutation.isPending ||
+      batchDeleteNetworkMutation.isPending,
   }
 }

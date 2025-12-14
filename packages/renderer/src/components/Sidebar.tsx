@@ -10,9 +10,9 @@ export default function Sidebar() {
 
   const navItems = [
     { path: '/', icon: Home, label: '首页' },
-    { path: '/images', icon: Package, label: '镜像列表' },
-    { path: '/containers', icon: Box, label: '容器列表' },
-    { path: '/mappings', icon: Network, label: '映射列表' },
+    { path: '/images', icon: Package, label: '镜像管理' },
+    { path: '/containers', icon: Box, label: '容器管理' },
+    { path: '/mappings', icon: Network, label: '映射管理' },
   ]
 
   return (

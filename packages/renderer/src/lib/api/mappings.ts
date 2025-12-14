@@ -119,3 +119,33 @@ export async function deleteNetworkMapping(mappingId: string): Promise<void> {
     mockNetworkMappings.splice(index, 1)
   }
 }
+
+export async function batchDeletePortMappings(mappingIds: string[]): Promise<void> {
+  await delay(400)
+  mappingIds.forEach((mappingId) => {
+    const index = mockPortMappings.findIndex((m) => m.id === mappingId)
+    if (index > -1) {
+      mockPortMappings.splice(index, 1)
+    }
+  })
+}
+
+export async function batchDeleteVolumeMappings(mappingIds: string[]): Promise<void> {
+  await delay(400)
+  mappingIds.forEach((mappingId) => {
+    const index = mockVolumeMappings.findIndex((m) => m.id === mappingId)
+    if (index > -1) {
+      mockVolumeMappings.splice(index, 1)
+    }
+  })
+}
+
+export async function batchDeleteNetworkMappings(mappingIds: string[]): Promise<void> {
+  await delay(400)
+  mappingIds.forEach((mappingId) => {
+    const index = mockNetworkMappings.findIndex((m) => m.id === mappingId)
+    if (index > -1) {
+      mockNetworkMappings.splice(index, 1)
+    }
+  })
+}

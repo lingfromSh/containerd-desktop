@@ -18,3 +18,29 @@ export interface Image {
   registry?: string
   digest?: string
 }
+
+export interface ImageDetails extends Image {
+  architecture?: string
+  os?: string
+  author?: string
+  description?: string
+  layers?: string[]
+  env?: Record<string, string>
+  exposedPorts?: number[]
+  volumes?: string[]
+  workingDir?: string
+  entrypoint?: string[]
+  cmd?: string[]
+  labels?: Record<string, string>
+}
+
+export interface RemoteImage {
+  name: string
+  tag: string
+  registry: string
+  description?: string
+  size?: number
+  pullCount?: number
+  lastUpdated?: string
+  isOfficial?: boolean
+}
