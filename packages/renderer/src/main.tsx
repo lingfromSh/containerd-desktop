@@ -13,21 +13,37 @@ import ImagesPage from './routes/images.tsx'
 import ContainersPage from './routes/containers.tsx'
 import MappingsPage from './routes/mappings.tsx'
 
-import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import TopBar from './components/TopBar'
 
 import * as TanStackQueryProvider from './integrations/tanstack-query/root-provider.tsx'
 
 import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
 
-const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Header />
-      <Outlet />
+const SIDEBAR_WIDTH = 260
+
+function Layout() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Sidebar />
+      <TopBar />
+      <main
+        className="flex-1 overflow-y-auto"
+        style={{
+          marginLeft: `${SIDEBAR_WIDTH}px`,
+          paddingTop: '64px',
+        }}
+      >
+        <Outlet />
+      </main>
       <TanStackRouterDevtools />
-    </>
-  ),
+    </div>
+  )
+}
+
+const rootRoute = createRootRoute({
+  component: Layout,
 })
 
 const routeTree = rootRoute.addChildren([

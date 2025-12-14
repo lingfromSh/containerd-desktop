@@ -5,7 +5,7 @@ import type { RootRoute } from '@tanstack/react-router'
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-blue-50 text-gray-900 p-8">
+    <div className="min-h-full bg-gray-50 text-gray-900 p-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">欢迎使用 Containerd Desktop</h1>
@@ -18,10 +18,10 @@ function HomePage() {
           {/* 镜像列表卡片 */}
           <Link
             to="/images"
-            className="group bg-white rounded-lg p-6 border border-blue-200 hover:border-blue-500 transition-all hover:shadow-lg hover:shadow-blue-500/20"
+            className="group bg-white rounded-lg p-6 border border-gray-200 hover:border-indigo-500 transition-all hover:shadow-md shadow-sm"
           >
             <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-blue-600 rounded-lg group-hover:bg-blue-500 transition-colors text-white">
+              <div className="p-3 bg-indigo-600 rounded-lg group-hover:bg-indigo-500 transition-colors text-white">
                 <Package size={32} />
               </div>
               <h2 className="text-2xl font-semibold">镜像列表</h2>
@@ -34,10 +34,10 @@ function HomePage() {
           {/* 容器列表卡片 */}
           <Link
             to="/containers"
-            className="group bg-white rounded-lg p-6 border border-blue-200 hover:border-blue-500 transition-all hover:shadow-lg hover:shadow-blue-500/20"
+            className="group bg-white rounded-lg p-6 border border-gray-200 hover:border-indigo-500 transition-all hover:shadow-md shadow-sm"
           >
             <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-blue-600 rounded-lg group-hover:bg-blue-500 transition-colors text-white">
+              <div className="p-3 bg-indigo-600 rounded-lg group-hover:bg-indigo-500 transition-colors text-white">
                 <Box size={32} />
               </div>
               <h2 className="text-2xl font-semibold">容器列表</h2>
@@ -50,10 +50,10 @@ function HomePage() {
           {/* 映射列表卡片 */}
           <Link
             to="/mappings"
-            className="group bg-white rounded-lg p-6 border border-blue-200 hover:border-blue-500 transition-all hover:shadow-lg hover:shadow-blue-500/20"
+            className="group bg-white rounded-lg p-6 border border-gray-200 hover:border-indigo-500 transition-all hover:shadow-md shadow-sm"
           >
             <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-blue-600 rounded-lg group-hover:bg-blue-500 transition-colors text-white">
+              <div className="p-3 bg-indigo-600 rounded-lg group-hover:bg-indigo-500 transition-colors text-white">
                 <Network size={32} />
               </div>
               <h2 className="text-2xl font-semibold">映射列表</h2>
