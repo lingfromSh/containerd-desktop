@@ -87,7 +87,7 @@ export function RegistryConfig() {
   }
 
   if (isLoading) {
-    return <div className="text-gray-400">加载中...</div>
+    return <div className="text-gray-600">加载中...</div>
   }
 
   return (
@@ -95,23 +95,23 @@ export function RegistryConfig() {
       {!showForm ? (
         <>
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-white">镜像源配置</h3>
+            <h3 className="text-lg font-semibold text-gray-900">镜像源配置</h3>
             <button
               type="button"
               onClick={handleNew}
-              className="px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition-colors"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
             >
               + 添加镜像源
             </button>
           </div>
           {configs.length === 0 ? (
-            <div className="text-center py-8 text-gray-400">
+            <div className="text-center py-8 text-gray-600">
               <p>暂无镜像源配置</p>
             </div>
           ) : (
-            <div className="overflow-x-auto rounded-lg border border-gray-700">
-              <table className="w-full text-sm text-gray-200">
-                <thead className="bg-gray-800 text-gray-100">
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="w-full text-sm text-gray-700">
+                <thead className="bg-blue-50 text-gray-900">
                   <tr>
                     <th className="px-4 py-3 text-left">名称</th>
                     <th className="px-4 py-3 text-left">URL</th>
@@ -119,9 +119,9 @@ export function RegistryConfig() {
                     <th className="px-4 py-3 text-left">操作</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-700">
+                <tbody className="divide-y divide-gray-200">
                   {configs.map((config) => (
-                    <tr key={config.id} className="hover:bg-gray-800 transition-colors">
+                    <tr key={config.id} className="hover:bg-blue-50 transition-colors">
                       <td className="px-4 py-3">{config.name}</td>
                       <td className="px-4 py-3">{config.url}</td>
                       <td className="px-4 py-3">
@@ -130,7 +130,7 @@ export function RegistryConfig() {
                             是
                           </span>
                         ) : (
-                          <span className="px-2 py-1 bg-gray-600 text-white rounded text-xs">
+                          <span className="px-2 py-1 bg-gray-400 text-white rounded text-xs">
                             否
                           </span>
                         )}
@@ -175,58 +175,58 @@ export function RegistryConfig() {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-800 p-6 rounded-lg border border-gray-700"
+          className="bg-white p-6 rounded-lg border border-gray-200"
         >
-          <h3 className="text-lg font-semibold mb-4 text-white">
+          <h3 className="text-lg font-semibold mb-4 text-gray-900">
             {editingConfig ? '编辑镜像源' : '添加镜像源'}
           </h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">名称 *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">名称 *</label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">URL *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">URL *</label>
               <input
                 type="text"
                 value={formData.url}
                 onChange={(e) => setFormData({ ...formData, url: e.target.value })}
                 required
                 placeholder="harbor.flexiv.com"
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">用户名（可选）</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">用户名（可选）</label>
               <input
                 type="text"
                 value={formData.username}
                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">密码（可选）</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">密码（可选）</label>
               <input
                 type="password"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-gray-300">
+              <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
                 <input
                   type="checkbox"
                   checked={formData.isDefault}
                   onChange={(e) => setFormData({ ...formData, isDefault: e.target.checked })}
-                  className="w-4 h-4 text-cyan-600 bg-gray-700 border-gray-600 rounded focus:ring-cyan-500"
+                  className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
                 />
                 <span>设为默认镜像源</span>
               </label>
@@ -236,7 +236,7 @@ export function RegistryConfig() {
             <button
               type="submit"
               disabled={isSaving}
-              className="px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isSaving ? '保存中...' : '保存'}
             </button>
@@ -246,7 +246,7 @@ export function RegistryConfig() {
                 setShowForm(false)
                 setEditingConfig(null)
               }}
-              className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
+              className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors"
             >
               取消
             </button>

@@ -43,16 +43,16 @@ export function ContainerList({
 
   if (containers.length === 0) {
     return (
-      <div className="text-center py-12 text-gray-400">
+      <div className="text-center py-12 text-gray-600">
         <p>暂无容器</p>
       </div>
     )
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-gray-700">
-      <table className="w-full text-sm text-gray-200">
-        <thead className="bg-gray-800 text-gray-100">
+    <div className="overflow-x-auto rounded-lg border border-gray-200">
+      <table className="w-full text-sm text-gray-700">
+        <thead className="bg-blue-50 text-gray-900">
           <tr>
             <th className="px-4 py-3 text-left">容器名称</th>
             <th className="px-4 py-3 text-left">状态</th>
@@ -61,9 +61,9 @@ export function ContainerList({
             <th className="px-4 py-3 text-left">操作</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-700">
+        <tbody className="divide-y divide-gray-200">
           {containers.map((container) => (
-            <tr key={container.id} className="hover:bg-gray-800 transition-colors">
+            <tr key={container.id} className="hover:bg-blue-50 transition-colors">
               <td className="px-4 py-3">{container.name}</td>
               <td className="px-4 py-3">{getStatusBadge(container.status)}</td>
               <td className="px-4 py-3">{container.image}</td>

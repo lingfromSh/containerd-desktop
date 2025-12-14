@@ -20,16 +20,16 @@ export function ImageList({ images, onDelete, isDeleting }: ImageListProps) {
 
   if (images.length === 0) {
     return (
-      <div className="text-center py-12 text-gray-400">
+      <div className="text-center py-12 text-gray-600">
         <p>暂无镜像</p>
       </div>
     )
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-gray-700">
-      <table className="w-full text-sm text-gray-200">
-        <thead className="bg-gray-800 text-gray-100">
+    <div className="overflow-x-auto rounded-lg border border-gray-200">
+      <table className="w-full text-sm text-gray-700">
+        <thead className="bg-blue-50 text-gray-900">
           <tr>
             <th className="px-4 py-3 text-left">镜像名称</th>
             <th className="px-4 py-3 text-left">标签</th>
@@ -39,12 +39,12 @@ export function ImageList({ images, onDelete, isDeleting }: ImageListProps) {
             <th className="px-4 py-3 text-left">操作</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-700">
+        <tbody className="divide-y divide-gray-200">
           {images.map((image) => (
-            <tr key={image.id} className="hover:bg-gray-800 transition-colors">
+            <tr key={image.id} className="hover:bg-blue-50 transition-colors">
               <td className="px-4 py-3">{image.name}</td>
               <td className="px-4 py-3">
-                <span className="px-2 py-1 bg-cyan-600 text-white rounded text-xs">
+                <span className="px-2 py-1 bg-blue-600 text-white rounded text-xs">
                   {image.tag}
                 </span>
               </td>

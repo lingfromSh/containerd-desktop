@@ -33,14 +33,14 @@ export function MappingList({
   return (
     <div className="w-full">
       {/* Tabs */}
-      <div className="border-b border-gray-700 mb-4">
+      <div className="border-b border-gray-200 mb-4">
         <nav className="flex gap-4">
           <button
             type="button"
             onClick={() => setActiveTab('ports')}
             className={`px-4 py-2 font-medium transition-colors ${activeTab === 'ports'
-                ? 'text-cyan-400 border-b-2 border-cyan-400'
-                : 'text-gray-400 hover:text-gray-200'
+              ? 'text-blue-600 border-b-2 border-blue-600'
+              : 'text-gray-600 hover:text-gray-900'
               }`}
           >
             端口映射 ({portMappings.length})
@@ -49,8 +49,8 @@ export function MappingList({
             type="button"
             onClick={() => setActiveTab('volumes')}
             className={`px-4 py-2 font-medium transition-colors ${activeTab === 'volumes'
-                ? 'text-cyan-400 border-b-2 border-cyan-400'
-                : 'text-gray-400 hover:text-gray-200'
+              ? 'text-blue-600 border-b-2 border-blue-600'
+              : 'text-gray-600 hover:text-gray-900'
               }`}
           >
             卷映射 ({volumeMappings.length})
@@ -59,8 +59,8 @@ export function MappingList({
             type="button"
             onClick={() => setActiveTab('networks')}
             className={`px-4 py-2 font-medium transition-colors ${activeTab === 'networks'
-                ? 'text-cyan-400 border-b-2 border-cyan-400'
-                : 'text-gray-400 hover:text-gray-200'
+              ? 'text-blue-600 border-b-2 border-blue-600'
+              : 'text-gray-600 hover:text-gray-900'
               }`}
           >
             网络映射 ({networkMappings.length})
@@ -150,18 +150,18 @@ function PortMappingTab({
           <button
             type="button"
             onClick={() => setShowForm(true)}
-            className="mb-4 px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition-colors"
+            className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
           >
             + 添加端口映射
           </button>
           {mappings.length === 0 ? (
-            <div className="text-center py-12 text-gray-400">
+            <div className="text-center py-12 text-gray-600">
               <p>暂无端口映射</p>
             </div>
           ) : (
-            <div className="overflow-x-auto rounded-lg border border-gray-700">
-              <table className="w-full text-sm text-gray-200">
-                <thead className="bg-gray-800 text-gray-100">
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="w-full text-sm text-gray-700">
+                <thead className="bg-blue-50 text-gray-900">
                   <tr>
                     <th className="px-4 py-3 text-left">容器</th>
                     <th className="px-4 py-3 text-left">容器端口</th>
@@ -170,9 +170,9 @@ function PortMappingTab({
                     <th className="px-4 py-3 text-left">操作</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-700">
+                <tbody className="divide-y divide-gray-200">
                   {mappings.map((mapping) => (
-                    <tr key={mapping.id} className="hover:bg-gray-800 transition-colors">
+                    <tr key={mapping.id} className="hover:bg-blue-50 transition-colors">
                       <td className="px-4 py-3">
                         {mapping.containerName || mapping.containerId}
                       </td>
@@ -199,12 +199,12 @@ function PortMappingTab({
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-800 p-6 rounded-lg border border-gray-700"
+          className="bg-white p-6 rounded-lg border border-gray-200"
         >
-          <h3 className="text-lg font-semibold mb-4 text-white">创建端口映射</h3>
+          <h3 className="text-lg font-semibold mb-4 text-gray-900">创建端口映射</h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器 ID *
               </label>
               <input
@@ -212,22 +212,22 @@ function PortMappingTab({
                 value={formData.containerId}
                 onChange={(e) => setFormData({ ...formData, containerId: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器名称（可选）
               </label>
               <input
                 type="text"
                 value={formData.containerName}
                 onChange={(e) => setFormData({ ...formData, containerName: e.target.value })}
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器端口 *
               </label>
               <input
@@ -235,11 +235,11 @@ function PortMappingTab({
                 value={formData.containerPort}
                 onChange={(e) => setFormData({ ...formData, containerPort: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 主机端口 *
               </label>
               <input
@@ -247,17 +247,17 @@ function PortMappingTab({
                 value={formData.hostPort}
                 onChange={(e) => setFormData({ ...formData, hostPort: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">协议 *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">协议 *</label>
               <select
                 value={formData.protocol}
                 onChange={(e) =>
                   setFormData({ ...formData, protocol: e.target.value as 'tcp' | 'udp' })
                 }
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="tcp">TCP</option>
                 <option value="udp">UDP</option>
@@ -268,14 +268,14 @@ function PortMappingTab({
             <button
               type="submit"
               disabled={isCreating}
-              className="px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isCreating ? '创建中...' : '创建'}
             </button>
             <button
               type="button"
               onClick={() => setShowForm(false)}
-              className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
+              className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors"
             >
               取消
             </button>
@@ -334,18 +334,18 @@ function VolumeMappingTab({
           <button
             type="button"
             onClick={() => setShowForm(true)}
-            className="mb-4 px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition-colors"
+            className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
           >
             + 添加卷映射
           </button>
           {mappings.length === 0 ? (
-            <div className="text-center py-12 text-gray-400">
+            <div className="text-center py-12 text-gray-600">
               <p>暂无卷映射</p>
             </div>
           ) : (
-            <div className="overflow-x-auto rounded-lg border border-gray-700">
-              <table className="w-full text-sm text-gray-200">
-                <thead className="bg-gray-800 text-gray-100">
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="w-full text-sm text-gray-700">
+                <thead className="bg-blue-50 text-gray-900">
                   <tr>
                     <th className="px-4 py-3 text-left">容器</th>
                     <th className="px-4 py-3 text-left">容器路径</th>
@@ -354,9 +354,9 @@ function VolumeMappingTab({
                     <th className="px-4 py-3 text-left">操作</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-700">
+                <tbody className="divide-y divide-gray-200">
                   {mappings.map((mapping) => (
-                    <tr key={mapping.id} className="hover:bg-gray-800 transition-colors">
+                    <tr key={mapping.id} className="hover:bg-blue-50 transition-colors">
                       <td className="px-4 py-3">
                         {mapping.containerName || mapping.containerId}
                       </td>
@@ -383,12 +383,12 @@ function VolumeMappingTab({
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-800 p-6 rounded-lg border border-gray-700"
+          className="bg-white p-6 rounded-lg border border-gray-200"
         >
-          <h3 className="text-lg font-semibold mb-4 text-white">创建卷映射</h3>
+          <h3 className="text-lg font-semibold mb-4 text-gray-900">创建卷映射</h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器 ID *
               </label>
               <input
@@ -396,22 +396,22 @@ function VolumeMappingTab({
                 value={formData.containerId}
                 onChange={(e) => setFormData({ ...formData, containerId: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器名称（可选）
               </label>
               <input
                 type="text"
                 value={formData.containerName}
                 onChange={(e) => setFormData({ ...formData, containerName: e.target.value })}
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器路径 *
               </label>
               <input
@@ -419,26 +419,26 @@ function VolumeMappingTab({
                 value={formData.containerPath}
                 onChange={(e) => setFormData({ ...formData, containerPath: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">主机路径 *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">主机路径 *</label>
               <input
                 type="text"
                 value={formData.hostPath}
                 onChange={(e) => setFormData({ ...formData, hostPath: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-gray-300">
+              <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
                 <input
                   type="checkbox"
                   checked={formData.readOnly}
                   onChange={(e) => setFormData({ ...formData, readOnly: e.target.checked })}
-                  className="w-4 h-4 text-cyan-600 bg-gray-700 border-gray-600 rounded focus:ring-cyan-500"
+                  className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500"
                 />
                 <span>只读</span>
               </label>
@@ -448,14 +448,14 @@ function VolumeMappingTab({
             <button
               type="submit"
               disabled={isCreating}
-              className="px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isCreating ? '创建中...' : '创建'}
             </button>
             <button
               type="button"
               onClick={() => setShowForm(false)}
-              className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
+              className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors"
             >
               取消
             </button>
@@ -514,18 +514,18 @@ function NetworkMappingTab({
           <button
             type="button"
             onClick={() => setShowForm(true)}
-            className="mb-4 px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition-colors"
+            className="mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
           >
             + 添加网络映射
           </button>
           {mappings.length === 0 ? (
-            <div className="text-center py-12 text-gray-400">
+            <div className="text-center py-12 text-gray-600">
               <p>暂无网络映射</p>
             </div>
           ) : (
-            <div className="overflow-x-auto rounded-lg border border-gray-700">
-              <table className="w-full text-sm text-gray-200">
-                <thead className="bg-gray-800 text-gray-100">
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="w-full text-sm text-gray-700">
+                <thead className="bg-blue-50 text-gray-900">
                   <tr>
                     <th className="px-4 py-3 text-left">容器</th>
                     <th className="px-4 py-3 text-left">网络名称</th>
@@ -534,9 +534,9 @@ function NetworkMappingTab({
                     <th className="px-4 py-3 text-left">操作</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-700">
+                <tbody className="divide-y divide-gray-200">
                   {mappings.map((mapping) => (
-                    <tr key={mapping.id} className="hover:bg-gray-800 transition-colors">
+                    <tr key={mapping.id} className="hover:bg-blue-50 transition-colors">
                       <td className="px-4 py-3">
                         {mapping.containerName || mapping.containerId}
                       </td>
@@ -563,12 +563,12 @@ function NetworkMappingTab({
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-800 p-6 rounded-lg border border-gray-700"
+          className="bg-white p-6 rounded-lg border border-gray-200"
         >
-          <h3 className="text-lg font-semibold mb-4 text-white">创建网络映射</h3>
+          <h3 className="text-lg font-semibold mb-4 text-gray-900">创建网络映射</h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器 ID *
               </label>
               <input
@@ -576,43 +576,43 @@ function NetworkMappingTab({
                 value={formData.containerId}
                 onChange={(e) => setFormData({ ...formData, containerId: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 容器名称（可选）
               </label>
               <input
                 type="text"
                 value={formData.containerName}
                 onChange={(e) => setFormData({ ...formData, containerName: e.target.value })}
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">网络名称 *</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">网络名称 *</label>
               <input
                 type="text"
                 value={formData.networkName}
                 onChange={(e) => setFormData({ ...formData, networkName: e.target.value })}
                 required
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 IP 地址（可选）
               </label>
               <input
                 type="text"
                 value={formData.ipAddress}
                 onChange={(e) => setFormData({ ...formData, ipAddress: e.target.value })}
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 别名（逗号分隔，可选）
               </label>
               <input
@@ -620,7 +620,7 @@ function NetworkMappingTab({
                 value={formData.aliases}
                 onChange={(e) => setFormData({ ...formData, aliases: e.target.value })}
                 placeholder="alias1, alias2"
-                className="w-full px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full px-3 py-2 bg-white text-gray-900 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
           </div>
@@ -628,14 +628,14 @@ function NetworkMappingTab({
             <button
               type="submit"
               disabled={isCreating}
-              className="px-4 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isCreating ? '创建中...' : '创建'}
             </button>
             <button
               type="button"
               onClick={() => setShowForm(false)}
-              className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
+              className="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors"
             >
               取消
             </button>
